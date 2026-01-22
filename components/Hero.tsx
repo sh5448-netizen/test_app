@@ -25,21 +25,23 @@ const Hero: React.FC = () => {
           
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
             경영의 무게는 나누고<br />
-            {/* Enhanced Gold Gradient Text with Staggered Animation */}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] inline-block pb-2 filter drop-shadow-sm">
-              {highlightText.split('').map((char, index) => (
-                <span 
-                  key={index} 
-                  className="inline-block opacity-0 animate-fade-in-up"
-                  style={{ 
-                    animationDelay: `${0.5 + index * 0.15}s`,
-                    animationFillMode: 'forwards' 
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
-            </span>는 더합니다.
+            {/* Staggered text animation with gradient */}
+            <span className="relative inline-block pb-2">
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700]">
+                  {highlightText.split('').map((char, index) => (
+                    <span 
+                      key={index} 
+                      className="inline-block opacity-0 animate-fadeInUp"
+                      style={{ 
+                        animationDelay: `${0.4 + index * 0.1}s`,
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  ))}
+               </span>
+            </span>
+            는 더합니다.
           </h1>
           
           <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl font-light">

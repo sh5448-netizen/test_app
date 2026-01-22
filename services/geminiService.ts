@@ -24,18 +24,15 @@ export const streamGeminiResponse = async (
   onChunk: (text: string) => void
 ): Promise<void> => {
   try {
-    // Exclude the last message from history as it corresponds to the newMessage
-    // being sent in the current turn.
     const chatHistory = history.slice(0, -1).map(msg => ({
       role: msg.role,
       parts: [{ text: msg.text }]
     }));
 
     const chat = ai.chats.create({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3-flash-preview',
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
-        thinkingConfig: { thinkingBudget: 0 }, // Minimize latency for chat
       },
       history: chatHistory
     });
